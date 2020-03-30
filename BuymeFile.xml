@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+<websiteURL>chrome</websiteURL>
+<url>https://www.buyme.co.il/</url>
+<firstName>Lior</firstName>
+<lastName>bellaish</lastName>
+<email>liortestbuyme@gmail.com</email>
+<password>Aa123456</password>
+<cash>150</cash>
+<forwho>Tanya Bellaish</forwho>
+<sender>Lior Bellaish</sender>
+<uploadPicPath>"C:\\Users\\טניה וליאור\\IdeaProjects\\Buyme_Project\\wedding-cake.jpeg"</uploadPicPath>
+<blessing>מזל טוב לרגל נישואיכם</blessing>
+<receiverMail>bellaish2@gmail.com</receiverMail>
+
+</config>
