@@ -57,7 +57,7 @@ public class OrderPage
         whoSend.sendKeys(general.readFromFile("sender"));
         blessing.clear();
         blessing.sendKeys(general.readFromFile("blessing"));
-        uploadPic.sendKeys("C:\\pic\\pic.png");
+        uploadPic.sendKeys("C:\\Users\\טניה וליאור\\IdeaProjects\\Buyme_Project\\pic.png");
         eventList.click();
         event.click();
         general.radioButtonSelect(payNow);
@@ -75,7 +75,7 @@ public class OrderPage
         whoSend.sendKeys(general.readFromFile("sender"));
         blessing.clear();
         blessing.sendKeys(general.readFromFile("blessing"));
-        uploadPic.sendKeys("C:\\pic\\pic.png");
+        uploadPic.sendKeys("C:\\Users\\טניה וליאור\\IdeaProjects\\Buyme_Project\\pic.png");
         eventList.click();
         event.click();
         general.radioButtonSelect(payNow);

@@ -20,6 +20,7 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
+//all tests
 public class Tests {
     @Rule
     public TestName name = new TestName();
@@ -81,20 +82,20 @@ public class Tests {
         try{    //email error message assert
             Assert.assertEquals("כל המתנות מחכות לך! אבל קודם צריך מייל וסיסמה",extras.mailErrorMessage.getText());
             liorTests.log(LogStatus.PASS, "The email error message are equals to the expected");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "The email error message not equals to the expected " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         try{    //password error message assert
             Assert.assertEquals("כל המתנות מחכות לך! אבל קודם צריך מייל וסיסמה",extras.passwordErrorMessage.getText());
             liorTests.log(LogStatus.PASS, "The password error message are equals to the expected");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "The password error message not equals to the expected " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
     }   //extras
 
@@ -103,20 +104,20 @@ public class Tests {
         try{    //email error message assert
             String mailErrorColorString = extras.mailErrorMessage.getAttribute("class");
             assertEmailRedTextColor(mailErrorColorString.equals("ff0000"));
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "The email error message color not equals to the expected " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         try{    //password error message assert
             String passErrorColorString = extras.passwordErrorMessage.getAttribute("class");
             assertPassRedTextColor(passErrorColorString.equals("ff0000"));
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "The password error message color not equals to the expected " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
     }
 
@@ -128,16 +129,16 @@ public class Tests {
         try {
             Assert.assertNotEquals("https://buyme.co.il/?modal=login", driver.getCurrentUrl());
             liorTests.log(LogStatus.PASS, "Success with website registration!");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         } catch (AssertionError asert) {
             WebElement error=driver.findElement(By.cssSelector("div.login-error"));
             if(error.getText().contains("זה כבר קיים במערכת")){
                 liorTests.log(LogStatus.PASS, "It's OK! Your Email already signed up! (check screenshot) " + error.getText());
-                liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+                printScreen();
             }
             else {
                 liorTests.log(LogStatus.FAIL, "Site registration failure! (check screenshot) " + asert);
-                liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+                printScreen();
             }
             }
     }
@@ -151,10 +152,10 @@ public class Tests {
         try {    //try to login
             Assert.assertNotEquals("https://buyme.co.il/?modal=login", driver.getCurrentUrl());
             liorTests.log(LogStatus.PASS, "Success to login!");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         } catch (AssertionError asert) {
             liorTests.log(LogStatus.FAIL, "fail login! " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         loged.search();
     }
@@ -164,10 +165,10 @@ public class Tests {
         try {   //assert webpage url change
             Assert.assertEquals("https://buyme.co.il/search?budget=2&category=6&region=12", driver.getCurrentUrl());
             liorTests.log(LogStatus.PASS, "Success to search!");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         } catch (AssertionError asert) {
             liorTests.log(LogStatus.FAIL, "fail search! " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
 
         chooseGift.chooseBusiness();
@@ -175,28 +176,27 @@ public class Tests {
             WebElement waitTemp=(new WebDriverWait(driver,20)).until((ExpectedConditions.presenceOfElementLocated(By.cssSelector("label[data='forSomeone']"))));
             Assert.assertNotEquals("https://buyme.co.il/supplier/777671",driver.getCurrentUrl());
             liorTests.log(LogStatus.PASS, "Success to choose business and money!");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
     }
         catch (AssertionError asert) {
         liorTests.log(LogStatus.FAIL, "fail to choose business and money! " + asert);
-        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+        printScreen();
     }
     }
 
     @Test
     public void test06_orderPage() throws Exception {
         orderPage.fillOrderForm();
-        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+        printScreen();
         Thread.sleep(1500);
         try {
             Assert.assertEquals("https://buyme.co.il/payment/12021902",driver.getCurrentUrl());
             liorTests.log(LogStatus.PASS, "Success to fill all info and submit to next page!");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "fail submit to next page! " + asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
-
+            printScreen();
         }
     }
 
@@ -204,23 +204,39 @@ public class Tests {
     public void test07_scrollToBottom() throws Exception {
         driver.get(general.readFromFile("url"));
         WebElement bottom=driver.findElement(By.cssSelector("div.footer-bottom"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bottom);
-        liorTests.log(LogStatus.PASS, "bottom of the page");
-        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
-        Thread.sleep(3000);
+        try {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bottom);
+            Thread.sleep(1500);
+            printScreen();
+            Assert.assertTrue(bottom.isDisplayed());
+            liorTests.log(LogStatus.PASS, "bottom of the page");
+            Thread.sleep(3000);
+        }
+        catch (AssertionError asert){
+            liorTests.log(LogStatus.PASS, "Not the bottom of the page");
+            printScreen();
+        }
     }
 
     @Test
     public void test08_receiverColor() throws Exception {
-        driver.get(general.readFromFile("url"));
-        WebElement waitTemp=(new WebDriverWait(driver,20)).until((ExpectedConditions.presenceOfElementLocated(By.cssSelector("form div.chosen-container.chosen-container-single.form-control.dib:nth-of-type(1)"))));
+     //   driver.get(general.readFromFile("url"));
+        WebElement waitTemp = (new WebDriverWait(driver, 20)).until((ExpectedConditions.presenceOfElementLocated(By.cssSelector("form div.chosen-container.chosen-container-single.form-control.dib:nth-of-type(1)"))));
         loged.search();
         chooseGift.chooseBusiness();
         Thread.sleep(2000);
-        String colorCode= orderPage.receiver.getCssValue("color");
-        liorTests.log(LogStatus.INFO, "the receiver color in rgba is: "+colorCode);
-        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+        String colorCode = orderPage.receiver.getCssValue("color");
+        String colorExpected="rgba(250, 180, 66, 1)";
+        try {
+            Assert.assertEquals(colorExpected, colorCode);
+            liorTests.log(LogStatus.INFO, "the receiver color in rgba is: " + colorCode+" as expected!");
+            printScreen();
+        } catch (AssertionError asert) {
+            liorTests.log(LogStatus.INFO, "the receiver color in rgba is: " + colorCode+" not as expected rgba(250, 180, 66, 1)");
+            printScreen();
+        }
     }
+
     @Test
     public void test09_assertInfo() throws Exception {
         driver.get(general.readFromFile("url"));
@@ -237,11 +253,11 @@ public class Tests {
             String receiver2=orderPage.finalForWho.getText();
             Assert.assertEquals(receiver1,receiver2);
             liorTests.log(LogStatus.PASS, "the receiver info equals ");
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         catch (AssertionError asert){
             liorTests.log(LogStatus.FAIL, "the receiver info not equals "+asert);
-            liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+            printScreen();
         }
         try {
             String sender1=general.readFromFile("sender");
@@ -265,11 +281,21 @@ public class Tests {
 
     @Test
     public void test10_loadingDots() throws InterruptedException {
-        Object point=extras.loadingDots();
+        Dimension point= (Dimension) extras.loadingDots();
         Thread.sleep(2000);
-        liorTests.log(LogStatus.INFO, "The dots size is: "+point);
-        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
-
+        try{
+            int height=18;
+            int width=18;
+            Assert.assertEquals(height,point.getHeight());
+            Assert.assertEquals(width,point.getWidth());
+            Thread.sleep(1000);
+            liorTests.log(LogStatus.INFO, "The dots size is: "+point+" as expected");
+            printScreen();
+        }
+        catch (AssertionError a) {
+            liorTests.log(LogStatus.INFO, "The dots size is: " + point+"not as expected: "+a);
+            printScreen();
+        }
     }
 
     private void assertEmailRedTextColor(boolean ff0000) {   //check text color to be red
@@ -296,7 +322,10 @@ public class Tests {
                 break;
         }
     }
-
+    private void printScreen()
+    {
+        liorTests.log(LogStatus.INFO, "details", liorTests.addScreenCapture(general.takeScreenShot(imagePath + "\\" + System.currentTimeMillis(), driver)));
+    }
     private void startTest() {
         liorTests = extent.startTest(name.getMethodName());
         liorTests.log(LogStatus.INFO, name.getMethodName() + ": start test");

@@ -31,6 +31,7 @@ public class Loged
     }
 
     public void search() throws InterruptedException {
+        Thread.sleep(1000);
         priceList.click();
         price.click();
         regionList.click();
